@@ -12,9 +12,19 @@ public class MoguraController : MonoBehaviour,IEnemy
 
     public float nowPosi;
 
+    public float _HitPoint = 100.0f;
+
     public void AddDamage(float damage)
     {
-        
+        _HitPoint -= damage;
+        Debug.Log("敵に" + damage + "のダメージ！");
+        Debug.Log("残りHP: " + _HitPoint);
+
+        if (_HitPoint <= 0)
+        {
+            Debug.Log("Enemyを倒した");
+        }
+
     }
 
     public void MoveSpeed(float nowPosi)
