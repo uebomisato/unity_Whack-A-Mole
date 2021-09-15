@@ -8,11 +8,17 @@ public class MoguraController : MonoBehaviour,IEnemy
     //[SerializeField]
     //public Vector2 SPEED = new Vector2(0.05f, 0.05f);
 
-    Vector2 Position;
+    //Vector2 Position;
 
-    public float nowPosi;
+    //public float nowPosi;
 
     public float _HitPoint = 100.0f;
+
+    public float MovingDistance = -3;
+
+
+    private float StartPos;
+
 
     public void AddDamage(float damage)
     {
@@ -34,7 +40,11 @@ public class MoguraController : MonoBehaviour,IEnemy
         //transform.position = Position;
 
 
-        transform.position = new Vector2(transform.position.x, nowPosi + Mathf.PingPong(Time.time / 3, 0.6f));
+        // コメントアウト
+        //transform.position = new Vector2(transform.position.x, nowPosi + Mathf.PingPong(Time.time / 3, 0.6f));
+
+
+        transform.position = new Vector2(transform.position.x, StartPos + Mathf.PingPong(Time.time * 2f, nowPosi));
     }
 
     // Start is called before the first frame update
@@ -43,13 +53,15 @@ public class MoguraController : MonoBehaviour,IEnemy
         // 現在位置をPositionに代入
         //Position = transform.position;
 
-        nowPosi = this.transform.position.y;
+        //nowPosi = this.transform.position.y;
+
+        StartPos = this.transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveSpeed(nowPosi);
+        MoveSpeed(MovingDistance);
     }
 
     
