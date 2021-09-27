@@ -36,28 +36,40 @@ public class HammerManager : MonoBehaviour
         //}
 
 
-        Vector2 direction = new Vector2(0, 0);
+        //Vector2 direction = new Vector2(0, 0);
 
-        if (Input.touchCount > 0)
+        //if (Input.touchCount > 0)
+        //{
+        //    Touch touch = Input.GetTouch(0);
+        //    float x = touch.deltaPosition.x;
+        //    float y = touch.deltaPosition.y;
+
+        //    //　移動する向きを求める
+        //    direction = new Vector2(x, y).normalized;
+
+
+        //    if (touch.phase == TouchPhase.Ended)
+        //    {
+        //        Debug.Log("離した瞬間");
+        //        animator.SetTrigger("Move0");　//SetTriggerでMove0を発動させる
+        //    }
+
+        //}
+
+        //Move(direction, speed);
+
+
+
+
+        if (Input.GetMouseButtonDown(0))
         {
-            Touch touch = Input.GetTouch(0);
-            float x = touch.deltaPosition.x;
-            float y = touch.deltaPosition.y;
-
-            //　移動する向きを求める
-            direction = new Vector2(x, y).normalized;
-
-
-            if (touch.phase == TouchPhase.Ended)
-            {
-                Debug.Log("離した瞬間");
-                animator.SetTrigger("Move0");　//SetTriggerでMove0を発動させる
-            }
-
+            var mousePosition = Input.mousePosition;
+            mousePosition.z = 10;
+            var pos = Camera.main.ScreenToWorldPoint(mousePosition);
+            //var cube = Instantiate(cubePrefab);
+            hammerObject.transform.position = pos;
+            //cube.transform.SetParent(this.transform);
         }
-
-        Move(direction, speed);
-
     }
 
     void Move(Vector2 direction, float speed)

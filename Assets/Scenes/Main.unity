@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hammerObject: {fileID: 539424788}
+  speed: 10
 --- !u!1 &618315588
 GameObject:
   m_ObjectHideFlags: 0
