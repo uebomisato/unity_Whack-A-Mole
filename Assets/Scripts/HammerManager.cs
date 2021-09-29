@@ -15,6 +15,9 @@ public class HammerManager : MonoBehaviour
     // 移動スピード
     public float speed = 100;
 
+    //public float speed = 2;
+    Vector2 vec;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,13 +66,23 @@ public class HammerManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            /*
             var mousePosition = Input.mousePosition;
             mousePosition.z = 10;
             var pos = Camera.main.ScreenToWorldPoint(mousePosition);
             //var cube = Instantiate(cubePrefab);
             hammerObject.transform.position = pos;
             //cube.transform.SetParent(this.transform);
+            */
+
+            vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //Debug.Log("x="+vec.x+" y="+vec.y);
+
+            transform.position = vec;
+            animator.SetTrigger("Move0");　//SetTriggerでMove0を発動させる
+
         }
+        //transform.position = Vector2.MoveTowards(transform.position, new Vector2(vec.x, vec.y), speed * Time.deltaTime);
     }
 
     void Move(Vector2 direction, float speed)
